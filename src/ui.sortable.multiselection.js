@@ -242,6 +242,8 @@ angular.module('ui.sortable.multiselection', [])
                 oldPosition = ui.item.sortable.index,
                 newPosition = ui.item.sortable.dropindex;
 
+            ui.item.parent().find('> .' + selectedItemClass).removeClass('' + selectedItemClass).show();
+
             var draggedElementIndexes = ui.item.sortableMultiSelect.indexes;
             if (!draggedElementIndexes.length) {
               return;
@@ -273,8 +275,6 @@ angular.module('ui.sortable.multiselection', [])
               ngModel,
               [ngModel.indexOf(draggedModel), 0]
               .concat(models.above));
-
-            ui.item.parent().find('> .' + selectedItemClass).removeClass('' + selectedItemClass).show();
           } else if (ui.item.sortable.isCanceled()) {
             sourceElement.find('> .' + selectedItemClass).show();
           }
